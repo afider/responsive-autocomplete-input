@@ -12,10 +12,14 @@
   <body>
 
     <div id="app">
-      <h1>Каталог продуктов</h1>
+      <header>
+        <h1>Каталог продуктов</h1>
+      </header>
+
 
       <div class="input-ac" :class="{ 'is-active' : isActive }" v-click-outside="onItemClickOut">
         <input type="text" class="input-ac__input" v-model="textInput" @focus="onFocus" @blur="onBlur">
+        <div class="input-ac__ctrl"></div>
         <div class="input-ac__autocomplete">
           <ul class="input-ac__lst">
             <li class="input-ac__item"  @click="onItemClick(folder.item)" v-for="folder in folders">{{folder.item}}</li>
@@ -62,6 +66,34 @@
             {item: 'Упаковка'},
             {item: 'Услуги'},
             {item: 'Цветы'}
+            {item: 'Лилии'}
+            {item: 'Азиатские'},
+            {item: 'Американские'},
+            {item: 'Белоснежные'},
+            {item: 'Восточные'},
+            {item: 'Длинноцветковые'},
+            {item: 'Кудреватые'},
+            {item: 'Орлеанские'},
+            {item: 'Орхидеи'},
+            {item: 'Пионы'},
+            {item: 'Анемоновидные'},
+            {item: 'Корончатые'},
+            {item: 'Махровые полушаровидные'},
+            {item: 'Немахровые'},
+            {item: 'Полумахровы'},
+            {item: 'Розовидные'},
+            {item: 'Японские'},
+            {item: 'Розы'},
+            {item: 'Грандифлора'},
+            {item: 'Миниатюрные'},
+            {item: 'Патио'},
+            {item: 'Плетистые'},
+            {item: 'Полиантовые'},
+            {item: 'Ругоза'},
+            {item: 'Флорибунда'},
+            {item: 'Чайно-гибридные'},
+            {item: 'Шрабы'},
+            {item: 'Хризантемы'},
           ]
         },
 
