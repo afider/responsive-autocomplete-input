@@ -23,6 +23,17 @@ html {
   box-sizing: border-box;
 }
 
+header {
+  background: #00a7f7;
+  padding: 30px 20px;
+  color: #fff;
+  font-weight: normal;
+}
+
+h1 {
+  font-weight: normal;
+}
+
 .input-ac {
   position: relative;
 }
@@ -35,6 +46,12 @@ html {
   left: 0;
   background: red;
   padding-right: 44px;
+}
+
+.input-ac__ctrl {
+  width: 44px;
+  height: 44px;
+  background: yellow;
 }
 
 .input-ac__input {
