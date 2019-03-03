@@ -24,7 +24,7 @@
 
       <div class="input-ac" :class="{ 'is-active' : isActive, 'is-filled' : isFilled }" v-click-outside="closeAutocomplete">
         <label class="input-ac__label" for="category">Укажите категорию:</label>
-        <input id="category" type="text" class="input-ac__input" v-model="textInput" @focus="onFocus" @blur="onBlur">
+        <input id="category" type="text" class="input-ac__input" v-model="textInput" @keyup="onInputChange" @focus="onFocus" @blur="onBlur">
         <div class="input-ac__ctrl" @click="closeAutocomplete">
           <i class="input-ac__ctrl__icon input-ac__ctrl__icon_close icon ion-md-close"></i>
           <i class="input-ac__ctrl__icon input-ac__ctrl__icon_check icon ion-md-checkmark"></i>

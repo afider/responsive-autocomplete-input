@@ -85,13 +85,6 @@ Vue.directive('focus', {
         console.log(this.textInput);
       },
     },
-    computed: {
-      filteredItems() {
-      return this.folders.item.filter(item => {
-        return item.toLowerCase().includes(this.textInput.toLowerCase())
-      })
-    }
-    },
     methods: {
       onFocus() {
         this.focused = true;
@@ -115,7 +108,12 @@ Vue.directive('focus', {
         console.log('onItemClickOut');
       },
       onInputChange() {
+        if (this.textInput.length > 0){
+          this.isFilled = true;
 
+        } else {
+          this.isFilled = false;
+        }
         console.log('onInputChange');
       },
 
