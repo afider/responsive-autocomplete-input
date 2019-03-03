@@ -4,141 +4,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Responsive autocomplete</title>
-    <script src="./vue.js" charset="utf-8"></script>
-    <script src="./axios.js" charset="utf-8"></script>
+
+
     <link rel="stylesheet" href="./style.css">
+    <link href="https://unpkg.com/ionicons@4.4.4/dist/css/ionicons.min.css" rel="stylesheet">
   </head>
 
   <body>
 
     <div id="app">
       <header>
-        <h1>Каталог продуктов</h1>
+        <h1>
+          <i class="icon ion-md-cart"></i>
+          Каталог продуктов
+        </h1>
+
       </header>
 
 
-      <div class="input-ac" :class="{ 'is-active' : isActive }" v-click-outside="onItemClickOut">
-        <input type="text" class="input-ac__input" v-model="textInput" @focus="onFocus" @blur="onBlur">
-        <div class="input-ac__ctrl"></div>
+      <div class="input-ac" :class="{ 'is-active' : isActive, 'is-filled' : isFilled }" v-click-outside="closeAutocomplete">
+        <label class="input-ac__label" for="category">Укажите категорию:</label>
+        <input id="category" type="text" class="input-ac__input" v-model="textInput" @focus="onFocus" @blur="onBlur">
+        <div class="input-ac__ctrl" @click="closeAutocomplete">
+          <i class="input-ac__ctrl__icon input-ac__ctrl__icon_close icon ion-md-close"></i>
+          <i class="input-ac__ctrl__icon input-ac__ctrl__icon_check icon ion-md-checkmark"></i>
+        </div>
         <div class="input-ac__autocomplete">
           <ul class="input-ac__lst">
-            <li class="input-ac__item"  @click="onItemClick(folder.item)" v-for="folder in folders">{{folder.item}}</li>
+            <li class="input-ac__item"  @click="onItemClick(folder.item)" v-for="folder in folders">
+              <i class="input-ac__icon icon ion-md-folder"></i>
+              {{folder.item}}
+            </li>
           </ul>
         </div>
       </div>
 
     </div>
-    <script type="text/javascript">
-    Vue.directive('click-outside', {
-    bind: function (el, binding, vnode) {
-        window.event = function (event) {
-            if (!(el == event.target || el.contains(event.target))) {
-                vnode.context[binding.expression](event);
-            }
-        };
-        document.body.addEventListener('click', window.event)
-    },
-    unbind: function (el) {
-        document.body.removeEventListener('click', window.event)
-    },
-});
-    Vue.directive('focus', {
-      // Когда привязанный элемент вставлен в DOM...
-      inserted: function (el) {
-        // Переключаем фокус на элемент
-        el.focus()
-      }
-    })
-
-      var App = new Vue ({
-        el: '#app',
-        data: {
-          textInput: '',
-          focused: false,
-          isActive: false,
-          inputValue: 'xxx',
-          folders: [
-            {item: 'Горшечные'},
-            {item: 'Декор'},
-            {item: 'Игрушки'},
-            {item: 'Полиграфия'},
-            {item: 'Сладости'},
-            {item: 'Упаковка'},
-            {item: 'Услуги'},
-            {item: 'Цветы'},
-            {item: 'Лилии'},
-            {item: 'Азиатские'},
-            {item: 'Американские'},
-            {item: 'Белоснежные'},
-            {item: 'Восточные'},
-            {item: 'Длинноцветковые'},
-            {item: 'Кудреватые'},
-            {item: 'Орлеанские'},
-            {item: 'Орхидеи'},
-            {item: 'Пионы'},
-            {item: 'Анемоновидные'},
-            {item: 'Корончатые'},
-            {item: 'Махровые полушаровидные'},
-            {item: 'Немахровые'},
-            {item: 'Полумахровы'},
-            {item: 'Розовидные'},
-            {item: 'Японские'},
-            {item: 'Розы'},
-            {item: 'Грандифлора'},
-            {item: 'Миниатюрные'},
-            {item: 'Патио'},
-            {item: 'Плетистые'},
-            {item: 'Полиантовые'},
-            {item: 'Ругоза'},
-            {item: 'Флорибунда'},
-            {item: 'Чайно-гибридные'},
-            {item: 'Шрабы'},
-            {item: 'Хризантемы'},
-          ]
-        },
-
-        created: function() {
-          console.log('created');
-        },
-        mounted: function() {
-          console.log('mounted');
-        },
-        watch: {
-          textSearch: function(){
-            if (this.textSearch.length > 3){
-              this.textSearch = 'Jopa!!!';
-
-            }
-            console.log(this.textSearch);
-          },
-        },
-        methods: {
-          onFocus() {
-            this.focused = true;
-            console.log('onFocus()');
-            this.isActive = true;
-          },
-          onBlur() {
-            //this.focused = false;
-            //this.isActive = false;
-          },
-          onItemClick(folderItem) {
-            this.textInput = folderItem;
-            this.isActive = false;
-            console.log('onItemClick');
-          },
-          onBodyClick() {
-            console.log('onBodyClick');
-          },
-          onItemClickOut() {
-            this.isActive = false;
-            console.log('onItemClickOut');
-          }
-        }
-      });
-
-
-    </script>
-
+    <script src="./vue.js" charset="utf-8"></script>
+    <script src="./axios.js" charset="utf-8"></script>
+    <script src="./common.js" charset="utf-8"></script>
   </body>
 </html>
