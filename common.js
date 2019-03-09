@@ -98,6 +98,7 @@ Vue.directive('focus', {
       onItemClick(folderItem) {
         this.textInput = folderItem;
         this.isActive = false;
+        this.isFilled = true;
         console.log('onItemClick');
       },
       onBodyClick() {
@@ -107,16 +108,25 @@ Vue.directive('focus', {
         this.isActive = false;
         console.log('onItemClickOut');
       },
+      clearTextInput() {
+        this.textInput = '';
+        this.isFilled = false;
+      },
       onInputChange() {
-        if (this.textInput.length > 0){
-          this.isFilled = true;
-
-        } else {
-          this.isFilled = false;
-        }
+        // if (this.textInput.length > 0){
+        //   this.isFilled = true;
+        //
+        // } else {
+        //   this.isFilled = false;
+        // }
         console.log('onInputChange');
       },
-
-
+    },
+    computed: {
+      filterItems: function() {
+        return this.folders.filter((folder) => {
+          return folder.item.toLowerCase().match(this.textInput.toLowerCase());
+        });
+      }
     }
   });

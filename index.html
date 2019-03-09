@@ -24,20 +24,26 @@
 
       <div class="input-ac" :class="{ 'is-active' : isActive, 'is-filled' : isFilled }" v-click-outside="closeAutocomplete">
         <label class="input-ac__label" for="category">Укажите категорию:</label>
-        <input id="category" type="text" class="input-ac__input" v-model="textInput" @keydown="onInputChange" @keyup="onInputChange" @focus="onFocus" @blur="onBlur">
+        <div class="input-ac__wrapper">
+          <input id="category" type="text" class="input-ac__input" v-model="textInput" @keydown="onInputChange" @keyup="onInputChange" @focus="onFocus" @blur="onBlur">
+          <div class="input-ac__clear" @click="clearTextInput">
+            <i class="input-ac__ctrl__icon input-ac__ctrl__icon_close icon ion-md-close"></i>
+          </div>
+        </div>
         <div class="input-ac__ctrl" @click="closeAutocomplete">
-          <i class="input-ac__ctrl__icon input-ac__ctrl__icon_close icon ion-md-close"></i>
-          <i class="input-ac__ctrl__icon input-ac__ctrl__icon_check icon ion-md-checkmark"></i>
+          <i class="input-ac__ctrl-icon input-ac__ctrl-icon_close icon ion-md-close"></i>
         </div>
         <div class="input-ac__autocomplete">
           <ul class="input-ac__lst">
-            <li class="input-ac__item"  @click="onItemClick(folder.item)" v-for="folder in folders">
+            <li class="input-ac__item"  @click="onItemClick(folder.item)" v-for="folder in filterItems">
               <i class="input-ac__icon icon ion-md-folder"></i>
               {{folder.item}}
             </li>
           </ul>
         </div>
       </div>
+
+
 
     </div>
     <script src="./vue.js" charset="utf-8"></script>
