@@ -20,6 +20,12 @@ Vue.directive('focus', {
   }
 });
 
+Vue.directive('$model', {
+  bind: function (el, binding, vnode) {
+    el.oninput = () => (vnode.context[binding.expression] = el.value)
+  }
+})
+
   var App = new Vue ({
     el: '#app',
     data: {
