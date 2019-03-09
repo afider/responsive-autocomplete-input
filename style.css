@@ -28,49 +28,134 @@ header {
   padding: 30px 20px;
   color: #fff;
   font-weight: normal;
+  margin: -20px -20px 20px -20px;
+
+
 }
 
 h1 {
   font-weight: normal;
 }
 
+h1 i {
+  margin-right: 4px;
+}
+
 .input-ac {
   position: relative;
 }
 
-.is-active.input-ac {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: red;
-  padding-right: 44px;
+@media (max-width: 600px) {
+  .is-active.input-ac {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    padding-right: 44px;
+  }
 }
 
 .input-ac__ctrl {
   width: 44px;
   height: 44px;
-  background: yellow;
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 0;
+}
+
+.input-ac__ctrl-icon {
+  font-size: 41px;
+
+}
+
+@media (max-width: 600px) {
+  .is-active.input-ac .input-ac__ctrl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input-ac__ctrl-icon_close {
+    color: red;
+  }
+
 }
 
 .input-ac__input {
   font-family: sans-serif;
   height: 30px;
   display: block;
-  width: 50%;
+  width: 100%;
   background: #fff;
   border: 1px solid #e0e0e0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0 10px;
   font-size: 16px;
+  outline: none;
+  padding-right: 30px;
 }
 
-.is-active .input-ac__input {
-  width: 100%;
-  margin-right: 30px;
-  height: 44px;
+@media (max-width: 600px) {
+  .is-active .input-ac__input {
+    margin-right: 30px;
+    height: 44px;
+    padding-right: 44px;
+  }
+}
+
+.input-ac__wrapper {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+}
+
+@media (max-width: 600px) {
+  .input-ac__wrapper {
+    display: block;
+    width: 100%;
+  }
+}
+
+.input-ac__clear {
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.is-filled.input-ac .input-ac__clear {
+  display: flex;
+}
+.is-active.input-ac .input-ac__clear {
+  width: 44px;
+}
+
+.input-ac__clear i {
+  position: relative;
+  z-index: 1;
+}
+
+.input-ac__clear:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  background: #c2c2c2;
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .input-ac__autocomplete {
@@ -90,12 +175,19 @@ h1 {
 
 .is-active .input-ac__autocomplete {
   display: block;
-  top: 0;
-  right: 0;
-  width: 100%;
-  max-height: 100%;
-  bottom: 0;
-  margin-top: 44px;
+
+}
+
+@media (max-width: 600px) {
+  .is-active .input-ac__autocomplete {
+    display: block;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-height: 100%;
+    bottom: 0;
+    margin-top: 69px;
+  }
 }
 
 .input-ac__lst {
@@ -112,10 +204,33 @@ h1 {
   padding: 5px;
 }
 
-.is-active .input-ac__item {
-  padding: 10px;
+
+@media (max-width: 600px) {
+  .is-active .input-ac__item {
+    padding: 10px;
+  }
 }
 
 .input-ac__item:hover {
   background: #ccc;
+}
+
+.input-ac__icon {
+  font-size: 24px;
+  position: relative;
+  top: 2px;
+  margin-right: 4px;
+  color: #388e3c;
+}
+
+.input-ac__label {
+  padding: 5px 0;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .is-active .input-ac__label {
+    font-weight: bold;
+    padding-left: 10px;
+  }
 }
