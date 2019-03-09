@@ -138,9 +138,13 @@ h1 i {
 .is-filled.input-ac .input-ac__clear {
   display: flex;
 }
-.is-active.input-ac .input-ac__clear {
-  width: 44px;
+
+@media (max-width: 600px) {
+  .is-active.input-ac .input-ac__clear {
+    width: 44px;
+  }
 }
+
 
 .input-ac__clear i {
   position: relative;
